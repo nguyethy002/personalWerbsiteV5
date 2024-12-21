@@ -1,0 +1,41 @@
+@use "../general" as *
+
+.project-card
+  @extend .common-spacing
+  @apply relative
+  @apply w-full
+  height: 350px
+  @apply mb-10
+  // @apply bg-green-700
+  a
+    @extend .common-button
+  .image,.info-container
+    @apply block top-0 left-0
+    @apply h-full w-full
+    @apply absolute overflow-hidden
+    @apply rounded-lg
+  .image
+    @apply z-10
+    transition: all .3s ease-in-out
+    @apply pr-4 pb-4
+    img
+      @apply w-full h-full
+      @apply object-cover object-left-top
+      @apply rounded-lg
+  &:hover >.image
+    left: -600px
+    transform: rotate(2deg)
+    @screen sm
+      top: -300px
+      @apply left-0
+  .info-container
+    @apply pl-4 pt-4
+    .info
+      @apply flex flex-col
+      @apply justify-around
+      @apply rounded-lg  
+      @apply h-full w-full
+      @apply bg-yellow-800
+      @apply p-4 
+      .content
+        @apply h-full

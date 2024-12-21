@@ -1,0 +1,19 @@
+@use "./globalVars" as *
+@use "../general" as *
+
+.app-container
+  @apply flex flex-col
+  @apply bg-orange-200
+  min-height: 100vh
+  font-family: $font-primary
+  @screen lg
+    @apply flex flex-row-reverse
+  .app
+    @extend .common-spacing
+    @apply overflow-hidden
+    @apply w-full
+    & > .app-header
+      @apply flex flex-col justify-center items-center
+      @apply text-2xl text-green-300
+      @apply w-screen h-screen
+      @apply bg-blue-800

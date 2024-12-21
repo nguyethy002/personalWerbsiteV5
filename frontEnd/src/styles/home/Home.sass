@@ -1,0 +1,58 @@
+@use "/src/styles/general" as *
+
+.home-container
+  // @extend .common-spacing
+  @apply text-yellow-700
+  @apply p-4
+  h1
+    @extend .common-h1
+  h2
+    @extend .common-h2
+  p
+    @extend .common-text
+  .home
+    @apply flex flex-col-reverse
+    @apply justify-center items-center
+    @apply w-full flex-grow
+    @screen lg
+      @apply flex flex-row
+      @apply justify-around items-center
+    .content
+      @apply flex flex-col
+      @apply justify-center
+      @apply text-center
+      @apply h-full
+      @screen lg
+        @apply text-left
+      .type-writer
+        @apply leading-loose
+      .name,h2
+        @apply flex flex-row
+        h1:nth-child(2)
+          @apply text-green-700
+          @apply mx-1
+        @apply overflow-hidden
+        @apply border-r-2 border-solid
+        animation: typing 2s steps(40, end), blink-caret .5s step-end infinite
+        @apply whitespace-nowrap
+        @apply duration-500
+      h2
+        max-width: fit-content
+
+      @keyframes typing
+        from
+          width: 0
+        to
+          width: 100%
+      @keyframes blink-caret
+        from, to
+          @apply border-transparent
+        50%
+          @apply border-yellow-700
+
+  img
+    @apply bg-gray-700
+    @apply rounded-full
+    @apply mb-5
+    height: 296px
+    width: 296px

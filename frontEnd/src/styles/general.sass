@@ -1,0 +1,45 @@
+.common-h1
+  @apply text-2xl font-extrabold
+  @screen lg
+    @apply text-6xl
+
+.common-h2
+  @apply text-2xl font-extrabold
+  @screen lg
+    @apply text-5xl
+
+.common-h3
+  @apply text-xl font-bold
+  @screen lg
+    @apply text-4xl
+
+.common-text
+  @apply text-xl font-semibold
+  @screen lg
+    @apply text-xl
+
+.common-small-text
+  @apply text-base font-semibold
+  @screen lg
+    @apply text-lg
+
+.common-spacing
+  @apply flex flex-col
+  @apply justify-center items-center
+  @apply w-full flex-grow
+ 
+.common-width
+  max-width: 2000px
+
+.common-button
+  @apply text-xl text-yellow-800 font-bold
+  @apply p-2 w-32
+  @apply rounded-3xl
+  @apply outline-none
+  @apply border-none
+  @apply duration-200
+  @apply bg-orange-50
+  @apply text-center
+  &:hover, &:focus
+    filter: brightness(1.2)
+

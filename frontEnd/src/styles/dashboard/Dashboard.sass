@@ -1,0 +1,66 @@
+@use "../general" as *
+
+.dashboard-container
+  @extend  .common-spacing
+  @extend .common-width
+  @apply p-4
+  h1
+    @extend .common-h1
+  h2
+    @extend .common-h2
+  h3
+    @extend .common-h3
+  p
+    @extend .common-small-text
+  .intro
+    .intro-content
+      @extend .common-spacing
+      @apply text-green-700
+  .dashboard-wrapper
+    @apply flex flex-col-reverse
+    @screen xl
+      @apply grid
+      grid-template-columns: 2fr 1fr
+    .dashboard
+      @apply flex-grow w-full
+      @extend  .common-spacing
+      .cards-display
+        @screen lg
+          @apply grid grid-cols-2 gap-2
+          @apply my-4
+        @screen xl
+          @apply mr-4
+        .social-icon
+          @extend .common-spacing
+        .coursework
+          @apply grid grid-cols-3 gap-4
+          img
+            @apply w-12
+          p
+            @extend  .common-spacing
+    .experience-container
+      @extend .common-spacing
+      .experience
+        // background-image: linear-gradient(0deg, rgba(19,20,23,1), rgba(19,20,23,0.2) 10%),linear-gradient(180deg, rgba(19,20,23,1), rgba(19,20,23,0.2) 50%), linear-gradient(90deg, rgba(19,20,23,1), rgba(19,20,23,0.5) 50%),url('../../asset/DashboardImage.png')
+        // background-position: bottom center
+        // background-size: cover
+        @apply flex flex-col
+        @apply justify-center items-center
+        img
+          max-height: 700px
+
+      .social-icon
+        @apply my-5
+        @screen lg
+          @apply flex flex-row
+          @apply justify-start items-center
+        a
+          @apply flex flex-row 
+          @apply justify-start items-center
+          width: 135.93px
+          @screen lg
+            @apply justify-center
+          svg
+            @apply h-10 w-10
+            @apply my-2 mr-2
+            @apply text-green-300

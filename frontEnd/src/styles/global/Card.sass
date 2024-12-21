@@ -1,0 +1,33 @@
+@use "../general" as *
+
+.card-container
+  @extend .common-spacing
+  @apply my-4 p-4
+  @apply rounded-xl
+  // @apply shadow-xs
+  // @apply bg-gray-900
+  @apply bg-orange-300
+  @apply h-64 w-full
+  @screen xl
+    @apply h-full
+  h2
+    @apply text-green-700
+    @apply border-green-500 border-r-2
+    writing-mode: vertical-lr
+    text-orientation: mixed
+  h3
+    @apply text-yellow-900
+  p
+    @apply text-yellow-800
+    @apply leading-loose
+  @screen lg
+    @apply my-0
+.card
+  @apply flex flex-row
+  @apply w-full
+  @apply items-center
+  .content-container
+    @extend .common-spacing
+    @apply p-4
+    @apply text-left
+

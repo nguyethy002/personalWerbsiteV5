@@ -1,0 +1,9 @@
+export { default as Header } from "./Header";
+export { default as Card } from "./globalComponents/Card";
+export { default as ProjectCard } from "./projectComponents/ProjectCard";
+export { default as Icon } from "./Icon";
+export { default as BlogList } from "./blogsComponents/BlogList";
+export { default as CreatePost } from "./blogsComponents/CreatePost";
+export { default as Home } from "./homeComponents/Home";
+export { default as Dashboard } from "./dashBoardComponents/Dashboard";
+export { default as Project } from "./projectComponents/Project";

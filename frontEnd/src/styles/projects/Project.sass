@@ -1,0 +1,20 @@
+@use "../general" as *
+
+.project-container
+  @extend .common-spacing
+  @extend .common-width
+  @apply p-4
+  h1
+    @extend .common-h1
+    @apply text-green-700
+  h3
+    @extend .common-h3
+    @apply text-orange-200
+  .main-project, .side-project
+    @apply text-white
+    @extend .common-spacing
+    @apply h-full w-full
+    @screen lg
+      @apply grid grid-cols-2 gap-10
+    @screen xl
+      @apply grid grid-cols-3 gap-10
