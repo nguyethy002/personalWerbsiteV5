@@ -18,15 +18,22 @@ const CreatePost: React.FC = () => {
       await axios.post("http://localhost:5000/api/posts", newPost);
 
       // Navigate back to the blog list page after creation
-      navigate("/blog"); // '/' refers to the Blog List page (change it to your route path if different)
+      navigate("/blog"); // Change '/blog' to match your blog list route
     } catch (error) {
       console.error(error); // Log the error for debugging
       alert("Error creating post");
     }
   };
 
+  const handleGoBack = () => {
+    navigate("/blog"); // Navigate back to the blog list page
+  };
+
   return (
     <div>
+      <button onClick={handleGoBack} style={{ marginTop: "10px" }}>
+        Go Back
+      </button>
       <h2>Create New Post</h2>
       <form onSubmit={handleSubmit}>
         <div>

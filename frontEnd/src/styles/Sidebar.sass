@@ -1,0 +1,64 @@
+@use "./general" as *
+
+.header
+  @apply flex flex-row
+  @apply justify-center items-center
+  @apply bg-green-700
+  @apply shadow-md
+  z-index: 1000
+  position: relative
+
+  .sidebar
+    @apply fixed top-0 left-0 h-full bg-green-700
+    @apply overflow-hidden
+    @apply transition-all duration-300 ease-in-out
+    z-index: 999
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    @apply w-0 // default collapsed width
+
+    &.open
+      @apply w-64 // Open width of the sidebar
+
+    &.closed
+      @apply w-16 // Adjust collapsed state to show just the button
+
+    nav
+      @apply w-full
+      @apply p-1
+      @screen lg
+        @apply flex flex-col
+        @apply justify-center items-center
+        @apply h-full p-0
+      flex-grow: 1
+
+    ul
+      @apply flex flex-col
+      @apply justify-around items-start
+      @screen lg
+        @apply grid grid-rows-5
+        @apply justify-items-center
+
+    li
+      a
+        @apply text-white
+        @extend .common-text
+        &:hover, &:focus
+          @apply text-orange-400
+
+    .line
+      @extend .common-spacing
+      @apply h-20 text-orange-400
+
+    .sidebar-buttons
+      display: flex
+      justify-content: center
+      margin-top: auto // This will push the button to the bottom of the sidebar
+
+    .sidebar-toggle
+      @apply p-2 bg-orange-500 text-white rounded-lg
+      @apply hover:bg-orange-700
+      @apply transition-colors duration-300 ease-in-out
+      @apply self-center // To center the button horizontally
+      @apply mb-4 // To add some margin from the bottom

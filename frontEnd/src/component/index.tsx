@@ -1,4 +1,4 @@
-export { default as Header } from "./Header";
+export { default as Header } from "./Sidebar";
 export { default as Card } from "./globalComponents/Card";
 export { default as ProjectCard } from "./projectComponents/ProjectCard";
 export { default as Icon } from "./Icon";

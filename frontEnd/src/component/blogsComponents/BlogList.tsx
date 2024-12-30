@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../../styles/blogs/BlogList.sass";
 
 interface Post {
   _id: string; // Add _id for MongoDB document ID
@@ -36,7 +37,7 @@ const BlogList: React.FC = () => {
 
   return (
     <div>
-      <h2>All Blog Posts</h2>
+      <h1>All Blog Posts</h1>
       <ul>
         {posts.map((post) => (
           <li key={post._id}>
