@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 import Icon from "./Icon"; // Adjust the path to where your Icon component is located
 import "../styles/Sidebar.sass";
 
-// Define the navigation items with FontAwesome icons as tuples
+// Define the navigation items with correct FontAwesome icon styles
 const NAV_ITEMS = [
-  { to: "/", label: "Home", icon: ["fas", "home"] },
-  { to: "/dashboard", label: "About", icon: ["fas", "info-circle"] },
-  { to: "/project", label: "Project", icon: ["fas", "folder"] },
-  { to: "/blog", label: "Blog", icon: ["fas", "pen"] },
+  { to: "/", label: "Home", icon: ["fas", "home"] }, // Solid Home Icon
+  { to: "/dashboard", label: "About", icon: ["fas", "info-circle"] }, // Solid Info Circle Icon
+  { to: "/project", label: "Project", icon: ["fas", "folder"] }, // Solid Folder Icon
+  { to: "/blog", label: "Blog", icon: ["fas", "pen"] }, // Solid Pen Icon
 ];
 
 const Header = () => {
