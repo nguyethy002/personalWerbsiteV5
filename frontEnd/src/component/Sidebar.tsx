@@ -4,7 +4,7 @@ import Icon from "./Icon"; // Adjust the path to where your Icon component is lo
 import "../styles/Sidebar.sass";
 
 // Define the navigation items with correct FontAwesome icon styles
-const NAV_ITEMS = [
+const NAV_ITEMS: { to: string; label: string; icon: [string, string] }[] = [
   { to: "/", label: "Home", icon: ["fas", "home"] }, // Solid Home Icon
   { to: "/dashboard", label: "About", icon: ["fas", "info-circle"] }, // Solid Info Circle Icon
   { to: "/project", label: "Project", icon: ["fas", "folder"] }, // Solid Folder Icon
@@ -38,7 +38,7 @@ const Header = () => {
                     {isSidebarOpen && <span className="label">{item.label}</span>}
                   </NavLink>
                 </li>
-                {index < NAV_ITEMS.length - 1 && <div className="line">❀</div>}
+                {index < NAV_ITEMS.length - 1 && <div className="line"></div>}
               </React.Fragment>
             ))}
           </ul>
