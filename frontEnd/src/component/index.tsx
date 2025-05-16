@@ -7,3 +7,4 @@ export { default as CreatePost } from "./blogsComponents/CreatePost";
 export { default as Home } from "./homeComponents/Home";
 export { default as Dashboard } from "./dashBoardComponents/Dashboard";
 export { default as Project } from "./projectComponents/Project";
+export { default as BlogPost } from "./blogsComponents/BlogPost";

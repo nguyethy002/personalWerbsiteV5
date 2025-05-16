@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/blogs/BlogList.sass";
+import { Link } from "react-router-dom";
 
 interface Post {
   _id: string; // Add _id for MongoDB document ID
@@ -41,14 +42,15 @@ const BlogList: React.FC = () => {
       <ul>
         {posts.map((post) => (
           <li key={post._id}>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-            <small>{new Date(post.date).toLocaleDateString()}</small>
+            <Link to={`/blog/${post._id}`}>
+              <h3>{post.title}</h3>
+              <p>{post.content.substring(0, 150)}...</p>
+              <small>{new Date(post.date).toLocaleDateString()}</small>
+            </Link>
             <button onClick={() => deletePost(post._id)}>Delete</button>
           </li>
         ))}
       </ul>
-      <a href="/create">Create New Post</a>
     </div>
   );
 };

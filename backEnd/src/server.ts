@@ -76,6 +76,19 @@ app.delete(
   }
 );
 
+app.get("/api/posts/:id", async (req: Request, res: Response): Promise<Response> => {
+  try {
+    const post = await Blog.findById(req.params.id);
+    if (!post) {
+      return res.status(404).send("Post not found");
+    }
+    return res.json(post);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send("Error fetching post");
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
