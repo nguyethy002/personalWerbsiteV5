@@ -4,7 +4,7 @@ import "../../styles/blogs/BlogList.sass";
 import { Link } from "react-router-dom";
 
 interface Post {
-  _id: string; // Add _id for MongoDB document ID
+  _id: string;
   title: string;
   content: string;
   date: string;
@@ -13,22 +13,21 @@ interface Post {
 const BlogList: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
-  // Fetch all posts when component mounts
+  // ✅ Only show delete if running on localhost
+  const isAdmin = window.location.hostname === "localhost";
+
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/posts")
+      .get(`${import.meta.env.VITE_API_URL}/posts`)
       .then((response) => {
         setPosts(response.data);
       })
       .catch((error) => console.error("Error fetching posts", error));
   }, []);
 
-  // Function to delete a post
   const deletePost = async (id: string) => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`);
-
-      // Remove the post from the local state
+      await axios.delete(`${import.meta.env.VITE_API_URL}/posts/${id}`);
       setPosts(posts.filter((post) => post._id !== id));
     } catch (error) {
       console.error("Error deleting post", error);
@@ -47,7 +46,9 @@ const BlogList: React.FC = () => {
               <p>{post.content.substring(0, 150)}...</p>
               <small>{new Date(post.date).toLocaleDateString()}</small>
             </Link>
-            <button onClick={() => deletePost(post._id)}>Delete</button>
+            {isAdmin && (
+              <button onClick={() => deletePost(post._id)}>Delete</button>
+            )}
           </li>
         ))}
       </ul>

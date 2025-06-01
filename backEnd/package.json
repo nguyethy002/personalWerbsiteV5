@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsc --watch"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +21,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
-    "@types/cors": "^2.8.17",
+    "@types/cors": "^2.8.18",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }

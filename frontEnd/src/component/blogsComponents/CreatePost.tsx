@@ -1,47 +1,55 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const CreatePost: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newPost = { title, content };
 
-    console.log(newPost);
+    console.log("Creating post:", newPost);
 
     try {
-      // Make sure the URL matches the backend API
-      await axios.post("http://localhost:5000/api/posts", newPost);
+      await axios.post(`${import.meta.env.VITE_API_URL}/posts`, newPost); // ✅ Fixed path
 
-      // Navigate back to the blog list page after creation
-      navigate("/blog"); // Change '/blog' to match your blog list route
+      navigate("/blog"); // Redirect after successful creation
     } catch (error) {
-      console.error(error); // Log the error for debugging
-      alert("Error creating post");
+      if (axios.isAxiosError(error)) {
+        console.error("Axios error response:", error.response);
+        alert(`Error: ${error.response?.data || error.message}`);
+      } else {
+        console.error("Unknown error:", error);
+        alert("An unexpected error occurred");
+      }
     }
   };
 
   const handleGoBack = () => {
-    navigate("/blog"); // Navigate back to the blog list page
+    navigate("/blog");
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
       <button onClick={handleGoBack} style={{ marginTop: "10px" }}>
         Go Back
       </button>
       <h2>Create New Post</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div style={{ marginBottom: "16px" }}>
           <label>Title</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "8px",
+              marginTop: "8px",
+            }}
           />
         </div>
         <div>
@@ -49,6 +57,14 @@ const CreatePost: React.FC = () => {
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            style={{
+              width: "100%",
+              minHeight: "200px",
+              padding: "8px",
+              marginTop: "8px",
+              marginBottom: "16px",
+              resize: "vertical",
+            }}
           />
         </div>
         <button type="submit">Create Post</button>
