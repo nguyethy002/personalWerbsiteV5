@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "./Icon"; // Adjust the path to where your Icon component is located
 import "../styles/Sidebar.sass";
+import { Logo } from "../assets";
 
 // Define the navigation items with correct FontAwesome icon styles
 const NAV_ITEMS: { to: string; label: string; icon: [string, string] }[] = [
@@ -24,6 +25,7 @@ const Header = () => {
       <div className="sidebar-container hidden lg:flex">
         <div className="header">
           <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
+          <img src={Logo} alt="Logo" className="sidebar-logo" />
             <nav>
               <ul>
                 {NAV_ITEMS.map((item, index) => (

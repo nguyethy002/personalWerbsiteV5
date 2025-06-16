@@ -1,4 +1,5 @@
-// export { ReactComponent as Logo } from "./Logo.svg";
+import Logo from "./Logo.svg";
+export { Logo };
 export { default as ApheleiaImage } from "./Apheleia.png"
 export { default as StockwiseImage } from "./Stockwise.png"
 export { default as JamaImage } from "./Jama.png"
