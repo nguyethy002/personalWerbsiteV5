@@ -10,6 +10,17 @@ module.exports = {
       xl: "1280px",
       "2xl": "1536px",
     },
+    extend: {
+      keyframes: {
+        loading: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(200%)' }
+        }
+      },
+      animation: {
+        'loading': 'loading 1.5s ease-in-out infinite'
+      }
+    }
   },
   plugins: [require("tailwindcss"), require("autoprefixer")],
   content: [

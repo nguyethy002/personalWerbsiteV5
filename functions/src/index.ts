@@ -1,4 +1,4 @@
-import * as functions from "firebase-functions";
+import { onRequest } from "firebase-functions/v2/https";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -6,12 +6,18 @@ import mongoose from "mongoose";
 const app = express();
 
 // ✅ Explicit allowed origins
-const allowedOrigins = ["http://localhost:5173", "https://thy-website.web.app"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://thy-website.web.app",
+  "https://www.thy-website.web.app",
+  "thy-website.web.app",
+  "www.thy-website.web.app"
+];
 
 // ✅ Define full CORS options
 const corsOptions: cors.CorsOptions = {
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.some(allowed => origin.includes(allowed))) {
       callback(null, true);
     } else {
       callback(new Error("CORS not allowed"));
@@ -92,4 +98,4 @@ app.delete("/posts/:id", async (req, res) => {
 });
 
 // ✅ Firebase Function Export
-export const api = functions.https.onRequest(app);
+export const blogApi = onRequest({ cpu: 1 }, app);

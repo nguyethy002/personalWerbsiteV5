@@ -9,14 +9,15 @@
   position: relative
 
   .sidebar
-    @apply fixed top-0 left-0 h-full bg-green-700
+    @apply fixed top-0 left-0 min-h-screen bg-green-700
     @apply overflow-hidden
     @apply transition-all duration-300 ease-in-out
     z-index: 999
     display: flex
     flex-direction: column
-    justify-content: flex-start
+    justify-content: center
     @apply w-0 // default collapsed width
+   
 
     &.open
       @apply w-64 // Open width of the sidebar
@@ -34,11 +35,7 @@
       flex-grow: 1
 
     ul
-      @apply flex flex-col
-      @apply justify-around items-start
-      @screen lg
-        @apply grid grid-rows-5
-        @apply justify-items-center
+      @apply flex flex-col items-center
 
     li
       a
@@ -62,3 +59,30 @@
       @apply transition-colors duration-300 ease-in-out
       @apply self-center // To center the button horizontally
       @apply mb-4 // To add some margin from the bottom
+
+// Bottom nav styles for mobile
+.bottom-nav
+  @apply fixed bottom-0 left-0 w-full flex justify-around items-center bg-green-700 z-50
+  @apply py-2
+  border-top: 2px solid #e5e7eb
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08)
+
+  .bottom-nav-link
+    @apply flex flex-col items-center justify-center text-white px-2
+    font-size: 1rem
+    &.selected
+      @apply text-orange-400 font-bold
+    &:hover, &:focus
+      @apply text-orange-400
+
+  .bottom-nav-icon
+    font-size: 1.5rem
+    margin-bottom: 2px
+
+  .bottom-nav-label
+    font-size: 0.75rem
+    margin-top: 1px
+
+@screen lg
+  .bottom-nav
+    display: none !important

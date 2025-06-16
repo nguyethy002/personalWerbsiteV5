@@ -13,20 +13,12 @@
       }
     ]
   },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ],
-      "predeploy": [
-        "npm --prefix \"./functions\" run lint",
-        "npm --prefix \"./functions\" run build"
-      ]
-    }
-  ]
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs20",
+    "predeploy": [
+      "npm --prefix \"./functions\" run lint",
+      "npm --prefix \"./functions\" run build"
+    ]
+  }
 }

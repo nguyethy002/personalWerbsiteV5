@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/blogs/BlogList.sass";
 import { Link } from "react-router-dom";
+import LoadingBar from "../globalComponents/LoadingBar";
 
 interface Post {
   _id: string;
@@ -12,17 +13,20 @@ interface Post {
 
 const BlogList: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // ✅ Only show delete if running on localhost
   const isAdmin = window.location.hostname === "localhost";
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${import.meta.env.VITE_API_URL}/posts`)
       .then((response) => {
         setPosts(response.data);
       })
-      .catch((error) => console.error("Error fetching posts", error));
+      .catch((error) => console.error("Error fetching posts", error))
+      .finally(() => setLoading(false));
   }, []);
 
   const deletePost = async (id: string) => {
@@ -36,22 +40,29 @@ const BlogList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="blog-container">
       <h1>All Blog Posts</h1>
-      <ul>
-        {posts.map((post) => (
-          <li key={post._id}>
-            <Link to={`/blog/${post._id}`}>
-              <h3>{post.title}</h3>
-              <p>{post.content.substring(0, 150)}...</p>
-              <small>{new Date(post.date).toLocaleDateString()}</small>
-            </Link>
-            {isAdmin && (
-              <button onClick={() => deletePost(post._id)}>Delete</button>
-            )}
-          </li>
-        ))}
-      </ul>
+
+      {loading ? (
+        <LoadingBar />
+      ) : (
+        <ul className="blog-list">
+          {posts.map((post) => (
+            <li key={post._id} className="blog-card">
+              <Link to={`/blog/${post._id}`}>
+                <h3>{post.title}</h3>
+                <div className="blog-content">
+                  <p>{post.content}</p>
+                  <small>{new Date(post.date).toLocaleDateString()}</small>
+                </div>
+              </Link>
+              {isAdmin && (
+                <button onClick={() => deletePost(post._id)}>Delete</button>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

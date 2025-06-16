@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import LoadingBar from "../globalComponents/LoadingBar";
 
 interface Post {
   _id: string;
@@ -66,7 +67,7 @@ const BlogPost: React.FC = () => {
           padding: "8px 16px",
           marginBottom: "20px",
           cursor: "pointer",
-          backgroundColor: "#007bff",
+          backgroundColor: "#f97216",
           color: "white",
           border: "none",
           borderRadius: "4px",
@@ -75,7 +76,7 @@ const BlogPost: React.FC = () => {
         Back to Blog List
       </button>
 
-      {loading && <p>Loading post... ID: {id}</p>}
+      {loading && <LoadingBar />}
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
